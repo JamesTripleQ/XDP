@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class xdp_MotherShipLocationIntel extends BaseIntelPlugin {
 
-    private String sprite = Global.getSettings().getSpriteName("icons", "derelictflag");
+    private String sprite = Global.getSettings().getSpriteName("illustrations", "city_from_above");
     private IntervalUtil check = new IntervalUtil(1f, 1f);
 
     @Override

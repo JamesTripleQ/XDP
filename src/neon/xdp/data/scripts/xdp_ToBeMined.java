@@ -151,7 +151,7 @@ public class xdp_ToBeMined {
             );
             Misc.setAbandonedStationMarket("xdp_MotherShipStorage", station);
             station.setSensorProfile(0f);
-            station.setInteractionImage("icons", "derelictflag");
+            station.setInteractionImage("illustrations", "city_from_above");
             if (station.getMarket() != null) {
                 station.getMarket().addIndustry(Industries.SPACEPORT);
             }
@@ -193,7 +193,7 @@ public class xdp_ToBeMined {
                 market.getCommodityData(Commodities.FOOD).addTradeMod(Factions.DERELICT, 3000f, 30f);
 
                 station1.setSensorProfile(0f);
-                station1.setInteractionImage("icons", "derelictflag");
+                station1.setInteractionImage("illustrations", "city_from_above");
                 station1.setCircularOrbitPointingDown(stationsystem.getCenter(), 0f, 10000f, 9999f);
             }
         }

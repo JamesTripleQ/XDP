@@ -1,4 +1,4 @@
-package neon.xdp.data.scripts.plugins;
+//package neon.xdp.data.scripts.plugins;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
@@ -15,29 +15,29 @@ import com.fs.starfarer.api.impl.campaign.procgen.themes.RemnantSeededFleetManag
 import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.special.ShipRecoverySpecial;
 import com.fs.starfarer.api.util.Misc;
 
-public class InvictaBountyHunterFIDConfig {
+//public class InvictaBountyHunterFIDConfig {
 
-    public static String DEFEATED_INVICTABH_KEY = "$xdp_defInvictaBountyHunter";
+    //public static String DEFEATED_INVICTABH_KEY = "$xdp_defInvictaBountyHunter";
 
-    public static class InvictaBountyHunter implements FleetInteractionDialogPluginImpl.FIDConfigGen {
-        public FleetInteractionDialogPluginImpl.FIDConfig createConfig() {
-            FleetInteractionDialogPluginImpl.FIDConfig config = new FleetInteractionDialogPluginImpl.FIDConfig();
+    //public static class InvictaBountyHunter implements FleetInteractionDialogPluginImpl.FIDConfigGen {
+     //   public FleetInteractionDialogPluginImpl.FIDConfig createConfig() {
+       //     FleetInteractionDialogPluginImpl.FIDConfig config = new FleetInteractionDialogPluginImpl.FIDConfig();
 
 
 //			config.alwaysAttackVsAttack = true;
 //			config.leaveAlwaysAvailable = true;
 //			config.showFleetAttitude = false;
-            config.showTransponderStatus = false;
-            config.showEngageText = false;
-            config.alwaysPursue = true;
-            config.dismissOnLeave = false;
-            //config.lootCredits = false;
-            config.withSalvage = false;
-            //config.showVictoryText = false;
-            config.printXPToDialog = true;
-
-
-            config.noSalvageLeaveOptionText = "Continue";
+//            config.showTransponderStatus = false;
+//            config.showEngageText = false;
+//            config.alwaysPursue = true;
+//            config.dismissOnLeave = false;
+//            //config.lootCredits = false;
+//            config.withSalvage = false;
+//            //config.showVictoryText = false;
+//            config.printXPToDialog = true;
+//
+//
+//            config.noSalvageLeaveOptionText = "Continue";
 //			config.postLootLeaveOptionText = "Continue";
 //			config.postLootLeaveHasShortcut = false;
 
@@ -115,8 +115,8 @@ public class InvictaBountyHunterFIDConfig {
            //         bcc.enemyDeployAll = true;
            //     }
             //};
-            return config;
-        }
-    }
-
-}
+//            return config;
+//        }
+//    }
+//
+//}
