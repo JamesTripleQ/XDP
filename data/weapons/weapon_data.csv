@@ -12,7 +12,7 @@ Adjutant Defense Cannon,xdp_adjutant,1,,100000,900,,1000,,,5,40,80,1,8,FRAGMENTA
 
 Will target missiles if no other targets are in range.",,,,,40.5
 ,xdp_maneuveringjet,,,,1,1,,,,,,,,,,,,,10,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,
-Angurvadal Assault Cannon,xdp_angurvadal,2,0.4,6000,900,,280,200,10,25,24,,,,ENERGY,275,,0.1,2,9,0.2,3,25,2,8,,900,,,75,,,"PD,PD_ALSO","energy18, he17, kinetic17, oddity, pd17, no_sell, no_dealer",,Unknown,,General,,,,,,,,,,7.5
+Angurvadal Assault Cannon,xdp_angurvadal,2,0.4,6000,700,,140,200,10,25,24,,,,ENERGY,125,,0.1,2,9,0.2,3,25,2,8,,900,,,75,,,"PD,PD_ALSO","energy18, he17, kinetic17, oddity, pd17, no_sell, no_dealer",,Unknown,,General,,,,,,,,,,7.5
 ,xdp_luminance_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,"no_drop, no_drop_salvage",,,,,,,,,,,,,,
 Mass Annihilator,xdp_mass_annihilator,3,,12000,700,750,,100,0,720,40,,,,ENERGY,,300,0.75,1,,,,,,,99999,,,,,,,"SYSTEM, FIRE_WHEN_INEFFICIENT","energy20, beam20, no_drop, no_drop_salvage",,Domain Restricted,,Anti Armor,,,,,%s: Deals up to %s the longer the beam is kept on target.,Charged Beam|1000 EMP dps,,,,
 Castigation Missile Platform,xdp_castigation,0,,15000,2000,,1500,,30,10,30,,,,HIGH_EXPLOSIVE,0,,0,20,3,0.25,0,0,0,0,,700,40,22,350,,,STRIKE,"strike16, rocket14, no_sell, no_dealer, oddity",,Unknown,,Semi-guided Torpedo ,Very Fast,Special,,,,,,,TRUE,16.4

@@ -3,7 +3,7 @@ System Overload,xdp_systemoverload,,,,,,0.25,,,,0.5,,1,20,,,,,,,,,,,,,graphics/i
 Damper Field,xdp_damper_fighter,1,,,,,,,1,0.01,0.25,3,0.25,0,,,,,TRUE,,,,TRUE,TRUE,,uses_damper_ai,graphics/icons/hullsys/damper_field.png
 Reality Shunt,xdp_phasetunneler,,,,,,,,,,3,0,4.5,25,,,,,,,,,,,,restricted,graphics/icons/hullsys/displacer.png
 Temporal Jaunt,xdp_synthdash,,,,,,0.25,,2,0.1,0.19,2,0.25,0.5,,,,,,,,,,,,,graphics/icons/hullsys/temporal_shell.png
-Rampage Drive,deepstrikerampager,1,,,,,,,,,2.7,7.5,4,20,,,,,,,TRUE,,TRUE,,,offensive,graphics/icons/hullsys/burn_drive.png
+Rampage Drive,deepstrikerampager,1,,,,,,,,,1.5,5,2,20,,,,,,,,,TRUE,,,offensive,graphics/icons/hullsys/burn_drive.png
 Blink Drive,xdp_blink_drive,,,,,,0.1,,5,0.7,0.15,0,0.25,0,,TRUE,,TRUE,,,,,,,,offensive,graphics/icons/hullsys/displacer.png
 Maximum Drive,xdp_victoryjets,,,,,,,,,,0.5,4,1,10,TRUE,,,,,,,,,,,movement,graphics/icons/hullsys/combat_burn.png
 Disabling Strike,xdp_energy_lash,,,,,,,,,,2,,0.1,7,,,,,,,,,,,,"restricted, offensive, defensive",graphics/icons/hullsys/energy_lash.png
@@ -11,3 +11,5 @@ Blitz,xdp_symbiant_system,,,,,,,,3,0.05,0.5,2,0.5,,,,,,,,,,,,,,graphics/icons/hu
 Gargoyle Drones,xdp_drone_system,,,,,,,,9,,0,,0,0,,,,,,,,,,,,,graphics/icons/hullsys/station_defense_drones_high.png
 Integrated Autofab,xdp_frigatespawner,,,,,,,,3,,,,,50,,,,,,,,,,,,,graphics/icons/hullsys/drone_pd_high.png
 Orion Charge,xdp_orion_charge,,,,,,,,4,0.1,0.4,0.001,0,0.9,,,,,,,,,,,,movement,graphics/icons/hullsys/nova_burst.png
+Rampage Protocol,rampage_protocol,5,,,900,,,,4,0.05,0.2,3,0.5,0.1,,,,,,,,,,TRUE,,offensive,graphics/icons/hullsys/burn_drive.png
+Overdrive Protocol,deepstrike_maneuver,5,,,900,,,,,,0.9,5,1,9.5,,,,TRUE,,,,,TRUE,TRUE,,movement,graphics/icons/hullsys/burn_drive.png

@@ -1,10 +1,22 @@
 {
-	"id":"deepstrikerampager",
+	"id":"rampage_protocol",
 	"type":"STAT_MOD",
 	"aiType":"WEAPON_BOOST",
 	
-	"statsScript":"neon.xdp.data.shipsystems.DeepStrikeRampager",
+	"statsScript":"neon.xdp.data.shipsystems.RampageProtocolStats",
         
+      #  "jitterUnderColor":[255,165,90,155],
+	#"jitterUnderCopies":25,
+	#"jitterUnderMinRange":0,
+	#"jitterUnderRange":7,
+	#"jitterUnderRangeRadiusFraction":0,
+	
+	#"jitterColor":[255,165,90,55],
+	#"jitterCopies":2,
+	#"jitterMinRange":0,
+	#"jitterRange":5,
+	#"jitterRangeRadiusFraction":0,
+
         #"weaponGlowColor":[255,165,90,0],
 	#"weaponTypes":[ENERGY, BALLISTIC, MISSILE],
 	
@@ -16,8 +28,9 @@
 	
 	"flameoutOnImpactChance":0,
 
-	"clampTurnRateAfter":true,
+	"clampTurnRateAfter":false,
 	"clampMaxSpeedAfter":false,
+	"alwaysAccelerate":false,
 
 	"useSound":"xdp_rampage_start",
 	"loopSound":"xdp_rampage",
@@ -25,8 +38,8 @@
 	"outOfUsesSound":"engine_disabled",
 	
 	"aiHints":{
-		"activeSpeedIncrease":100,
-		"burstMovementPotential":0,
-		"averageSpeedIncrease":100,
+		"activeSpeedIncrease":300,
+		"burstMovementPotential":200,
+		"averageSpeedIncrease":150,
 	}
 }

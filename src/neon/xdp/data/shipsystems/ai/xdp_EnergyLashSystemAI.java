@@ -18,9 +18,7 @@ import com.fs.starfarer.api.combat.ShipwideAIFlags.AIFlags;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.util.WeightedRandomPicker;
-import com.fs.starfarer.api.impl.combat.threat.EnergyLashSystemScript;
 import com.fs.starfarer.api.impl.combat.threat.EnergyLashActivatedSystem;
-
 
 public class xdp_EnergyLashSystemAI implements ShipSystemAIScript {
 
@@ -28,7 +26,7 @@ public class xdp_EnergyLashSystemAI implements ShipSystemAIScript {
 	protected CombatEngineAPI engine;
 	protected ShipwideAIFlags flags;
 	protected ShipSystemAPI system;
-	protected xdp_EnergyLashSystemAI script;
+	protected xdp_EnergyLashSystemScript systemScript; // Changed type to the main script
 
 	protected IntervalUtil tracker = new IntervalUtil(0.5f, 1f);
 
@@ -38,7 +36,10 @@ public class xdp_EnergyLashSystemAI implements ShipSystemAIScript {
 		this.engine = engine;
 		this.system = system;
 
-		script = (xdp_EnergyLashSystemAI) system.getScript();
+		// Store the system script properly
+		if (system.getScript() instanceof xdp_EnergyLashSystemScript) {
+			this.systemScript = (xdp_EnergyLashSystemScript) system.getScript();
+		}
 	}
 
 	public void advance(float amount, Vector2f missileDangerDir, Vector2f collisionDangerDir, ShipAPI target) {
@@ -65,19 +66,25 @@ public class xdp_EnergyLashSystemAI implements ShipSystemAIScript {
 		List<ShipAPI> ships = engine.getShips();
 		for (ShipAPI other : ships) {
 			if (other == ship) continue;
-			if (!script.isValidLashTarget(ship, other)) continue;
-			if (!script.isInRange(ship, other)) continue;
+			// Use the system script's methods
+			if (systemScript != null) {
+				if (!systemScript.isValidLashTarget(ship, other)) continue;
+				if (!systemScript.isInRange(ship, other)) continue;
+			} else {
+				// Fallback range check if script is null
+				float range = xdp_EnergyLashSystemScript.getRange(ship);
+				float dist = Misc.getDistance(ship.getLocation(), other.getLocation());
+				float radSum = ship.getCollisionRadius() + other.getCollisionRadius();
+				if (dist > range + radSum) continue;
+
+				// Basic validity check
+				if (other.isHulk() || other.getOwner() == 100) continue;
+				if (other.isShuttlePod()) continue;
+				if (other.isFighter()) continue;
+			}
 			result.add(other);
 		}
 		return result;
-	}
-
-	private boolean isInRange(ShipAPI ship, ShipAPI other) {
-		return false;
-	}
-
-	private boolean isValidLashTarget(ShipAPI ship, ShipAPI other) {
-		return false;
 	}
 
 	public WeightedRandomPicker<ShipAPI> getWeightedTargets(ShipAPI shipTarget) {
@@ -86,36 +93,66 @@ public class xdp_EnergyLashSystemAI implements ShipSystemAIScript {
 		for (ShipAPI other : getPossibleTargets()) {
 			float w = 0f;
 			if (ship.getOwner() == other.getOwner()) {
+				// Friendly target
 				if (other.getSystem() == null) continue;
 				if (!(other.getSystem().getScript() instanceof EnergyLashActivatedSystem)) continue;
 				if (other.getSystem().getCooldownRemaining() > 0) continue;
 				if (other.getSystem().isActive()) continue;
 				if (other.getFluxTracker().isOverloadedOrVenting()) continue;
 
-				EnergyLashActivatedSystem otherSystem = (EnergyLashActivatedSystem) other.getSystem().getScript();
-				w = otherSystem.getCurrentUsefulnessLevel(ship, other);
+				// Weight based on the friendly ship's needs
+				w = 1.0f; // Base weight
+
+				// Prioritize ships with high flux
+				float fluxLevel = other.getFluxTracker().getFluxLevel();
+				w += fluxLevel * 2.0f;
+
+				// Prioritize ships under fire
+				if (other.getFluxTracker().getHardFlux() > 0) {
+					w += 0.5f;
+				}
 			} else {
+				// Enemy target
 				ShieldAPI targetShield = other.getShield();
 				boolean targetShieldsFacingUs = targetShield != null &&
-							targetShield.isOn() &&
-							Misc.isInArc(targetShield.getFacing(), Math.max(30f, targetShield.getActiveArc()),
-									other.getLocation(), ship.getLocation());
-				if (targetShieldsFacingUs && EnergyLashSystemScript.DAMAGE <= 0) continue;
+						targetShield.isOn() &&
+						Misc.isInArc(targetShield.getFacing(), Math.max(30f, targetShield.getActiveArc()),
+								other.getLocation(), ship.getLocation());
+
+				// Don't target shielded enemies if damage is too low
+				if (targetShieldsFacingUs && xdp_EnergyLashSystemScript.DAMAGE <= 0) continue;
 
 				float dist = Misc.getDistance(ship.getLocation(), other.getLocation());
 				dist -= ship.getCollisionRadius() + other.getCollisionRadius();
 				if (dist < 0) dist = 0;
+
+				// Weight based on distance and target priority
+				float range = xdp_EnergyLashSystemScript.getRange(ship);
+				if (dist < range) {
+					w = 1.0f - (dist / range);
+				}
+
+				// Bonus for being the current target
 				if (other == shipTarget) {
 					w += 0.25f;
 				}
-				if (dist < 1000f) {
-					w += (1f - (dist / 1000f)) * 0.5f;
+
+				// Bonus for high-value targets
+				if (other.isCapital()) w += 0.3f;
+				if (other.isCruiser()) w += 0.2f;
+
+				// Bonus for targets with shields down
+				if (targetShield == null || !targetShield.isOn()) {
+					w += 0.4f;
 				}
-				w += 0.01f;
+
+				w += 0.01f; // Minimum weight
 			}
-			picker.add(other, w);
+
+			if (w > 0) {
+				picker.add(other, w);
+			}
 		}
 		return picker;
 	}
-
 }

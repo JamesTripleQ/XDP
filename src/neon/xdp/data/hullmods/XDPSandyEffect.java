@@ -24,7 +24,7 @@ public class XDPSandyEffect extends BaseHullMod {
     public static float ARMOR_DAMAGE_MULT = 5f;
     public static float HULL_DAMAGE_MULT = 5f;
     public static float EMP_DAMAGE_MULT = 0.5f;
-    public static float ENERGY_WEAPON_FLUX_INCREASE = 50f;
+    public static float ENERGY_WEAPON_FLUX_DECREASE = 0.5f;
     public static final float RESISTANCE = 0.35f;
     public static final float RESIST_TIME = 0.1f;
     private static final Set<String> BLOCKED_HULLMODS = new HashSet<>();
@@ -58,7 +58,7 @@ public class XDPSandyEffect extends BaseHullMod {
 
     public void applyEffectsAfterShipCreated(ShipAPI ship, String id) {
         super.applyEffectsAfterShipCreation(ship, id);
-        ship.addListener(new SandyListener(ship));
+        //ship.addListener(new SandyListener(ship));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class XDPSandyEffect extends BaseHullMod {
     @Override
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getMissileRoFMult().modifyMult(id, MISSILE_ROF_MULT);
-        stats.getEnergyWeaponFluxCostMod().modifyPercent(id, ENERGY_WEAPON_FLUX_INCREASE);
+        stats.getEnergyWeaponFluxCostMod().modifyPercent(id, ENERGY_WEAPON_FLUX_DECREASE);
         stats.getShieldTurnRateMult().modifyPercent(id, SHIELD_BONUS_TURN);
         stats.getShieldUnfoldRateMult().modifyPercent(id, SHIELD_BONUS_UNFOLD);
     }
@@ -85,8 +85,8 @@ public class XDPSandyEffect extends BaseHullMod {
 
     @Override
     public void applyEffectsAfterShipAddedToCombatEngine(ShipAPI ship, String id) {
-        ship.addListener(new SandyListener(ship));
-        ship.getMutableStats().getTimeMult().modifyMult(id, SandyListener.PASSIVE_TIMEFLOW);
+       // ship.addListener(new SandyListener(ship));
+        //ship.getMutableStats().getTimeMult().modifyMult(id, SandyListener.PASSIVE_TIMEFLOW);
         ship.getMutableStats().getArmorDamageTakenMult().modifyMult(id, ARMOR_DAMAGE_MULT);
         ship.getMutableStats().getHullDamageTakenMult().modifyMult(id, HULL_DAMAGE_MULT);
         ship.getMutableStats().getEmpDamageTakenMult().modifyMult(id, EMP_DAMAGE_MULT);
@@ -95,14 +95,14 @@ public class XDPSandyEffect extends BaseHullMod {
     }
 
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        if (index == 0) return "" + (int) Math.round((1f - SandyListener.ARMOR_REGEN) * 100f) + "%";
-        if (index == 1) return "" + (int) Math.round((1f - SandyListener.DISRUPTION_TIME) * 100f) + "%";
+        //if (index == 0) return "" + (int) Math.round((1f - SandyListener.ARMOR_REGEN) * 100f) + "%";
+       // if (index == 1) return "" + (int) Math.round((1f - SandyListener.DISRUPTION_TIME) * 100f) + "%";
         return null;
     }
 
     private static final Object STATUS_KEY = new Object();
 
-    class SandyListener implements AdvanceableListener, DamageDealtModifier {
+    //class SandyListener implements AdvanceableListener, DamageDealtModifier {
         String id = "example_ID";
         ShipAPI ship;
         float timer = 0.05f;
@@ -128,76 +128,76 @@ public class XDPSandyEffect extends BaseHullMod {
         private static final Color AFTERIMAGE_COLOR = new Color(255, 63, 0, 100);
 
         // Hullfoam parameters
-        final Map<HullSize, Float> repairSpeed = new HashMap<>();
-        final float maxFoam = 60f;
-        final float maxRepairReductionPerUsed = 0.7f;
-        {
-            repairSpeed.put(HullSize.CRUISER, 1.5f);
-            repairSpeed.put(HullSize.DESTROYER, 3f);
-        }
-
-        // track individual kill bonuses and their timers
-        float[] killBonuses = new float[maxKillsBonus];
-        float[] killTimers = new float[maxKillsBonus];
-
-        IntervalUtil interval = new IntervalUtil(timer, timer);
-
-        public SandyListener(ShipAPI attachedShip) {
-            ship = attachedShip;
-        }
-
-        @Override
-        public void advance(float amount) {
-            if (Global.getCombatEngine().isPaused() || ship.isHulk()) return;
-
-            // update and decay kill bonuses
-            float totalActiveBonus = 0f;
-            boolean hasActiveBonuses = false;
-
-            for (int i = 0; i < kills; i++) {
-                if (killBonuses[i] > 0) {
-                    killTimers[i] -= amount;
-                    if (killTimers[i] <= 0) {
-                        // This kill's bonus has expired
-                        killBonuses[i] = 0;
-                    } else {
-                        // decay the bonus over time
-                        killBonuses[i] = Math.max(0, killBonuses[i] - (decayRate * amount));
-                        totalActiveBonus += killBonuses[i];
-                        hasActiveBonuses = true;
-                    }
-                }
-            }
-
-            // calculate current bonus (base + active kill bonuses)
-            currentBonus = minBonus + totalActiveBonus;
-
-            // apply the time mult
-            ship.getMutableStats().getTimeMult().modifyMult(id, currentBonus);
-
-            // activate armor regeneration and hullfoam when kill bonuses are active
-            if (hasActiveBonuses && !ship.isHulk() && !ship.getFluxTracker().isVenting() && !ship.isPhased()) {
-                repairArmor(amount);
-                applyHullfoam(amount);
-            }
-
-            if (ship == Global.getCombatEngine().getPlayerShip()) {
-                Global.getCombatEngine().maintainStatusForPlayerShip(
-                        STATUS_KEY,
-                        Global.getSettings().getSpriteName("ui", "icon_op"),
-                        "KILL THEM ALL",
-                        Misc.getRoundedValue(currentBonus) + "x Timeflow",
-                        false
-                );
-            }
-
-            // Create afterimages
-            interval.advance(amount);
-            if (interval.intervalElapsed()) {
-                XDPSandevistan2.afterimage(ship, color, duration, duration, duration);
-            }
-        }
-
+       // final Map<HullSize, Float> repairSpeed = new HashMap<>();
+       // final float maxFoam = 60f;
+       // final float maxRepairReductionPerUsed = 0.7f;
+       // {
+       //     repairSpeed.put(HullSize.CRUISER, 1.5f);
+       //     repairSpeed.put(HullSize.DESTROYER, 3f);
+       // }
+       //
+       // // track individual kill bonuses and their timers
+       // float[] killBonuses = new float[maxKillsBonus];
+       // float[] killTimers = new float[maxKillsBonus];
+       //
+       // IntervalUtil interval = new IntervalUtil(timer, timer);
+       //
+       // public SandyListener(ShipAPI attachedShip) {
+       //     ship = attachedShip;
+       // }
+       //
+       // @Override
+       // public void advance(float amount) {
+       //     if (Global.getCombatEngine().isPaused() || ship.isHulk()) return;
+       //
+       //     // update and decay kill bonuses
+       //     float totalActiveBonus = 0f;
+       //     boolean hasActiveBonuses = false;
+       //
+       //     for (int i = 0; i < kills; i++) {
+       //         if (killBonuses[i] > 0) {
+       //             killTimers[i] -= amount;
+       //             if (killTimers[i] <= 0) {
+       //                 // This kill's bonus has expired
+       //                 killBonuses[i] = 0;
+       //             } else {
+       //                 // decay the bonus over time
+       //                 killBonuses[i] = Math.max(0, killBonuses[i] - (decayRate * amount));
+       //                 totalActiveBonus += killBonuses[i];
+       //                 hasActiveBonuses = true;
+       //             }
+       //         }
+       //     }
+       //
+       //     // calculate current bonus (base + active kill bonuses)
+       //     currentBonus = minBonus + totalActiveBonus;
+       //
+       //     // apply the time mult
+       //     ship.getMutableStats().getTimeMult().modifyMult(id, currentBonus);
+       //
+        //    // activate armor regeneration and hullfoam when kill bonuses are active
+        //    if (hasActiveBonuses && !ship.isHulk() && !ship.getFluxTracker().isVenting() && !ship.isPhased()) {
+        //        repairArmor(amount);
+        //        applyHullfoam(amount);
+        //    }
+        //
+        //    if (ship == Global.getCombatEngine().getPlayerShip()) {
+        //        Global.getCombatEngine().maintainStatusForPlayerShip(
+        //                STATUS_KEY,
+        //                Global.getSettings().getSpriteName("ui", "icon_op"),
+        //                "KILL THEM ALL",
+        //                Misc.getRoundedValue(currentBonus) + "x Timeflow",
+        //                false
+        //        );
+        //    }
+        //
+        //    // Create afterimages
+        //    interval.advance(amount);
+        //    if (interval.intervalElapsed()) {
+        //        XDPSandevistan2.afterimage(ship, color, duration, duration, duration);
+        //    }
+        //}
+        //
         private void repairArmor(float amount) {
             if (ship.getFluxTracker().isOverloaded() || ship.getFluxTracker().getTimeToVent() < DISRUPTION_TIME) {
                 return;
@@ -229,75 +229,75 @@ public class XDPSandyEffect extends BaseHullMod {
 
             Map<String, Object> customCombatData = Global.getCombatEngine().getCustomData();
             String id = ship.getId();
-            float foamLeft = maxFoam;
+           // float foamLeft = maxFoam;
 
-            if (customCombatData.get("MHMods_hullfoam" + id) != null && customCombatData.get("MHMods_hullfoam" + id) instanceof Float)
-                foamLeft = (float) customCombatData.get("MHMods_hullfoam" + id);
+           // if (customCombatData.get("MHMods_hullfoam" + id) != null && customCombatData.get("MHMods_hullfoam" + id) instanceof Float)
+            //    foamLeft = (float) customCombatData.get("MHMods_hullfoam" + id);
 
             float currentHP = ship.getHitpoints();
-            float repairReduction = maxRepairReductionPerUsed * (1 - foamLeft);
-            float missingHP = Math.max(0f, 1f - repairReduction - ship.getHullLevel());
-
-            if (missingHP > 0) {
-                float repairThatFrame = repairSpeed.get(ship.getHullSize()) * 0.01f * amount;
-                if (missingHP < repairThatFrame) repairThatFrame = missingHP;
-
-                float hullToRepair = ship.getMaxHitpoints() * repairThatFrame;
-                float percentRepaired = ship.getMaxHitpoints() * repairThatFrame / ship.getHullSpec().getHitpoints();
-                if (percentRepaired > foamLeft) {
-                    percentRepaired = foamLeft;
-                    hullToRepair = ship.getHullSpec().getHitpoints() * percentRepaired;
-                }
-                ship.setHitpoints(currentHP + hullToRepair);
-
-                foamLeft -= percentRepaired;
-            }
-
-            if (ship == Global.getCombatEngine().getPlayerShip()) {
-                if (foamLeft != 0) {
-                    Global.getCombatEngine().maintainStatusForPlayerShip("MHMods_hullfoam", "graphics/icons/hullsys/mhmods_hullfoam.png", "Hullfoam Left", (float) Math.round(foamLeft * 1000) / 10 + "%", false);
-                } else {
+           // float repairReduction = maxRepairReductionPerUsed * (1 - foamLeft);
+         //   float missingHP = Math.max(0f, 1f - repairReduction - ship.getHullLevel());
+         //
+         //  if (missingHP > 0) {
+         //      float repairThatFrame = repairSpeed.get(ship.getHullSize()) * 0.01f * amount;
+         //      if (missingHP < repairThatFrame) repairThatFrame = missingHP;
+         //
+         //      float hullToRepair = ship.getMaxHitpoints() * repairThatFrame;
+         //      float percentRepaired = ship.getMaxHitpoints() * repairThatFrame / ship.getHullSpec().getHitpoints();
+         //      if (percentRepaired > foamLeft) {
+         //          percentRepaired = foamLeft;
+         //          hullToRepair = ship.getHullSpec().getHitpoints() * percentRepaired;
+         //      }
+         //      ship.setHitpoints(currentHP + hullToRepair);
+         //
+         //      foamLeft -= percentRepaired;
+         //  }
+         //
+         //  if (ship == Global.getCombatEngine().getPlayerShip()) {
+         //      if (foamLeft != 0) {
+         //          Global.getCombatEngine().maintainStatusForPlayerShip("MHMods_hullfoam", "graphics/icons/hullsys/mhmods_hullfoam.png", "Hullfoam Left", (float) Math.round(foamLeft * 1000) / 10 + "%", false);
+         //      } else {
                     Global.getCombatEngine().maintainStatusForPlayerShip("MHMods_hullfoam", "graphics/icons/hullsys/mhmods_hullfoam.png", "Hullfoam Left", "OUT OF FOAM", true);
-                }
-            }
+        //        }
+        //    }
+        //
+        //    customCombatData.put("MHMods_hullfoam" + id, foamLeft);
+        //}
+        //
 
-            customCombatData.put("MHMods_hullfoam" + id, foamLeft);
-        }
+      // public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
+      //     if (target instanceof ShipAPI) {
+      //         ShipAPI targetShip = (ShipAPI) target;
+      //         if (targetShip.getOwner() != ship.getOwner()
+      //                 && !targetShip.isHulk()
+      //                 && targetShip.getHullSize() != ShipAPI.HullSize.FIGHTER
+      //                 && !targetShip.isStationModule()
+      //                 && !targetShip.hasListener(new KillTracker(ship))) {
+      //             targetShip.addListener(new KillTracker(ship));
+      //             return "added_kill_tracker";
+      //         }
+      //     }
+      //     return null;
+      // }
 
-        @Override
-        public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
-            if (target instanceof ShipAPI) {
-                ShipAPI targetShip = (ShipAPI) target;
-                if (targetShip.getOwner() != ship.getOwner()
-                        && !targetShip.isHulk()
-                        && targetShip.getHullSize() != ShipAPI.HullSize.FIGHTER
-                        && !targetShip.isStationModule()
-                        && !targetShip.hasListener(new KillTracker(ship))) {
-                    targetShip.addListener(new KillTracker(ship));
-                    return "added_kill_tracker";
-                }
-            }
-            return null;
-        }
-
-        public void addKillBonus() {
-            if (kills < maxKillsBonus) {
-                killBonuses[kills] = bonusPerKill;
-                killTimers[kills] = killBonusDuration;
-                kills++;
-            } else {
-                // Find the oldest bonus to replace
-                int oldestIndex = 0;
-                for (int i = 1; i < maxKillsBonus; i++) {
-                    if (killTimers[i] < killTimers[oldestIndex]) {
-                        oldestIndex = i;
-                    }
-                }
-                killBonuses[oldestIndex] = bonusPerKill;
-                killTimers[oldestIndex] = killBonusDuration;
-            }
-        }
-    }
+ //      public void addKillBonus() {
+ //          if (kills < maxKillsBonus) {
+ //              killBonuses[kills] = bonusPerKill;
+ //              killTimers[kills] = killBonusDuration;
+ //              kills++;
+ //          } else {
+ //              // Find the oldest bonus to replace
+ //              int oldestIndex = 0;
+ //              for (int i = 1; i < maxKillsBonus; i++) {
+ //                  if (killTimers[i] < killTimers[oldestIndex]) {
+ //                      oldestIndex = i;
+ //                  }
+ //              }
+ //              killBonuses[oldestIndex] = bonusPerKill;
+ //              killTimers[oldestIndex] = killBonusDuration;
+ //          }
+ //      }
+   }
 
     private Set<ShipAPI> nearbyShips = new HashSet<>();
     private float resisting = 0f;
@@ -368,15 +368,15 @@ static class KillTracker implements HullDamageAboutToBeTakenListener {
 
                     ship.setCustomData(key, true);
 
-                    if (dealer.getListenerManager() != null) {
-                        Optional<SandyListener> maybelistener = dealer.getListenerManager()
-                                .getListeners(SandyListener.class).stream().findFirst();
+                    //if (dealer.getListenerManager() != null) {
+                    //    Optional<SandyListener> maybelistener = dealer.getListenerManager()
+                     //           .getListeners(SandyListener.class).stream().findFirst();
 
-                        if (maybelistener.isPresent()) {
-                            SandyListener listener = maybelistener.get();
-                            listener.addKillBonus();
-                        }
-                    }
+                        //if (maybelistener.isPresent()) {
+                       //     SandyListener listener = maybelistener.get();
+                         //   listener.addKillBonus();
+                      //  }
+                  //  }
                 }
             }
             return false;
