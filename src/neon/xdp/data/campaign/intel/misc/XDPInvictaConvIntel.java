@@ -1,24 +1,11 @@
 package neon.xdp.data.campaign.intel.misc;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.campaign.*;
+
 import com.fs.starfarer.api.campaign.comm.IntelInfoPlugin; // ADD THIS IMPORT
-import com.fs.starfarer.api.campaign.econ.Industry;
-import com.fs.starfarer.api.campaign.econ.MarketAPI;
-import com.fs.starfarer.api.campaign.econ.MonthlyReport;
-import com.fs.starfarer.api.campaign.listeners.ColonyPlayerHostileActListener;
-import com.fs.starfarer.api.campaign.listeners.EconomyTickListener;
-import com.fs.starfarer.api.campaign.listeners.FleetEventListener;
-import com.fs.starfarer.api.campaign.rules.MemoryAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
-import com.fs.starfarer.api.fleet.FleetMemberAPI;
-import com.fs.starfarer.api.impl.campaign.ids.Factions;
-import com.fs.starfarer.api.impl.campaign.ids.MemFlags;
-import com.fs.starfarer.api.impl.campaign.ids.Tags;
 import com.fs.starfarer.api.impl.campaign.intel.BaseIntelPlugin;
 import com.fs.starfarer.api.impl.campaign.intel.contacts.ContactIntel;
-import com.fs.starfarer.api.impl.campaign.rulecmd.salvage.MarketCMD;
-import com.fs.starfarer.api.impl.campaign.shared.SharedData;
 import com.fs.starfarer.api.ui.ButtonAPI;
 import com.fs.starfarer.api.ui.IntelUIAPI;
 import com.fs.starfarer.api.ui.SectorMapAPI;
@@ -28,14 +15,13 @@ import neon.xdp.data.scripts.XDP_People;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
-import java.util.List; // ADD THIS IMPORT
+import java.util.List;
 import java.util.Set;
 
-import static com.fs.starfarer.api.impl.campaign.ids.Factions.DERELICT;
 
 
 /**
- *	Invicta's contact intel, also tracks what she wants to talk about
+ *	Invicta's contact intel, also tracks what Invicta wants to talk about
  */
 public class XDPInvictaConvIntel extends BaseIntelPlugin {
 
@@ -43,7 +29,7 @@ public class XDPInvictaConvIntel extends BaseIntelPlugin {
 	private final float randThoughtTime = 30f;
 	private PersonAPI invictaPerson;
 
-	// so we can hotswap the Invicta officer core for the special item in the cargo screen
+
 	public boolean runWhilePaused() {
 		return true;
 	}

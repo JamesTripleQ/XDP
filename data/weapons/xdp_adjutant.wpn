@@ -6,9 +6,8 @@
   "size": "LARGE",
   "displayArcRadius": 600,
   "turretSprite": "graphics/weapons/xdp_adjutant_base.png",
-  "turretGuxdp_rite": "graphics/weapons/xdp_adjutant_turret_recoil.png",
+  "turretGunSprite": "graphics/weapons/xdp_adjutant_turret_recoil.png",
   "hardpointSprite": "graphics/weapons/xdp_adjutant_base.png",
-  "hardpointGuxdp_rite": "graphics/weapons/xdp_adjutant_turret_recoil.png",
   "visualRecoil": 10,
   "renderHints": [
     "RENDER_BARREL_BELOW"

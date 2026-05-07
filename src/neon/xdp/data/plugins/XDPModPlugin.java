@@ -154,7 +154,6 @@ public class XDPModPlugin extends BaseModPlugin {
             if (hasSkill && !XDPModPlugin.hasParadeigmaSkill) {
                 XDPModPlugin.hasParadeigmaSkill = true;
                 log.info("got skill, add stuff");
-                xdp_ToBeMined.initializeParadeigmaContent();
             }
             // If skill was lost (shouldn't happen normally, but just in case)
             else if (!hasSkill && XDPModPlugin.hasParadeigmaSkill) {

@@ -7,13 +7,50 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="LazyLib" level="project" />
-    <orderEntry type="library" name="Graphics" level="project" />
-    <orderEntry type="library" name="LunaLib" level="project" />
+    <orderEntry type="library" name="jars5" level="project" />
+    <orderEntry type="library" name="jars" level="project" />
+    <orderEntry type="library" name="internal" level="project" />
+    <orderEntry type="library" name="Qol2" level="project" />
+    <orderEntry type="library" name="mikohime" level="project" />
+    <orderEntry type="library" name="HMI" level="project" />
+    <orderEntry type="library" name="SpecialUpgrades" level="project" />
+    <orderEntry type="library" name="jars6" level="project" />
+    <orderEntry type="library" name="Vok" level="project" />
+    <orderEntry type="library" name="ORKS" level="project" />
+    <orderEntry type="library" name="jars2" level="project" />
+    <orderEntry type="library" name="SWP" level="project" />
+    <orderEntry type="library" name="JaydeePiracy" level="project" />
     <orderEntry type="library" name="ExerelinCore" level="project" />
-    <orderEntry type="library" name="MagicLib" level="project" />
-    <orderEntry type="library" name="commons-compiler-jdk" level="project" />
-    <orderEntry type="library" name="starfarer" level="project" />
-    <orderEntry type="library" name="SecondInCommand1" level="project" />
+    <orderEntry type="library" name="Graphics" level="project" />
+    <orderEntry type="library" name="armaa" level="project" />
+    <orderEntry type="library" name="SkillExtra" level="project" />
+    <orderEntry type="library" name="Qol" level="project" />
+    <orderEntry type="library" name="ur" level="project" />
+    <orderEntry type="library" name="eluxormod" level="project" />
+    <orderEntry type="library" name="Vos" level="project" />
+    <orderEntry type="library" name="Epsilon_Pact" level="project" />
+    <orderEntry type="library" name="starsector-core" level="project" />
+    <orderEntry type="library" name="VIC" level="project" />
+    <orderEntry type="library" name="HMI_brighton" level="project" />
+    <orderEntry type="library" name="UGH" level="project" />
+    <orderEntry type="library" name="vri" level="project" />
+    <orderEntry type="library" name="US" level="project" />
+    <orderEntry type="library" name="ost" level="project" />
+    <orderEntry type="library" name="jars8" level="project" />
+    <orderEntry type="library" name="Cryos" level="project" />
+    <orderEntry type="library" name="Underworld" level="project" />
+    <orderEntry type="library" name="SEEKER" level="project" />
+    <orderEntry type="library" name="jar3" level="project" />
+    <orderEntry type="library" name="StarLords" level="project" />
+    <orderEntry type="library" name="starfarer.api" level="project" />
+    <orderEntry type="library" name="LazyLib1" level="project" />
+    <orderEntry type="library" name="lwjgl" level="project" />
+    <orderEntry type="library" name="starfarer_obf" level="project" />
+    <orderEntry type="library" name="LazyLib2" level="project" />
+    <orderEntry type="library" name="LunaLib1" level="project" />
+    <orderEntry type="library" name="MagicLib1" level="project" />
+    <orderEntry type="library" name="Graphics1" level="project" />
+    <orderEntry type="library" name="lwjgl_util" level="project" />
+    <orderEntry type="library" name="log4j-1.2.9" level="project" />
   </component>
 </module>
