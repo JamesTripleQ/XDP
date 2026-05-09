@@ -3,7 +3,7 @@
   "hullId": "xdp_superderelict",
   "displayName": "Standard",
   "goalVariant": true,
-  "fluxCapacitors": 13,
+  "fluxCapacitors": 14,
   "fluxVents": 30,
   "quality": 1,
   "permaMods": [],
@@ -24,6 +24,14 @@
     {
       "autofire": true,
       "mode": "ALTERNATING",
+      "weapons": {
+        "WS0012": "shredder",
+        "WS0013": "shredder"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
       "weapons": {
         "WS0001": "shockrepeater",
         "WS0003": "shockrepeater"
@@ -54,11 +62,6 @@
         "WS0010": "breach",
         "WS0011": "breach"
       }
-    },
-    {
-      "autofire": false,
-      "mode": "LINKED",
-      "weapons": {}
     },
     {
       "autofire": false,

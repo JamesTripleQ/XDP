@@ -3,7 +3,7 @@
   "hullId": "xdp_rampager",
   "displayName": "Standard",
   "goalVariant": true,
-  "fluxCapacitors": 24,
+  "fluxCapacitors": 30,
   "fluxVents": 30,
   "quality": 1,
   "permaMods": [],
@@ -49,8 +49,6 @@
       "mode": "LINKED",
       "weapons": {
         "WS0003": "vulcan",
-        "WS0004": "vulcan",
-        "WS0005": "vulcan",
         "WS0006": "vulcan",
         "WS0015": "vulcan",
         "WS0016": "vulcan",
