@@ -19,7 +19,9 @@
     "operations_center",
     "xdp_plasmajets",
     "xdp_shield",
-    "xdp_shield_arcing"
+    "xdp_shield_arcing",
+	"xdp_superderelict",
+	"xdp_rage_mod"
   ],
   "builtInWeapons": {
     "WS0003": "xdp_flux_spin1",

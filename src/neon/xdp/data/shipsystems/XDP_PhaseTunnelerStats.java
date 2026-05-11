@@ -35,7 +35,6 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
     private static final float DISTORTION_BLAST_RADIUS = 1500f;
     private static final Color EXPLOSION_COLOR = new Color(255, 255, 255);
     private static final float EXPLOSION_DAMAGE_AMOUNT = 5000f;
-    @SuppressWarnings("SuspiciousNameCombination")
     private static final DamageType EXPLOSION_DAMAGE_TYPE = DamageType.ENERGY;
     private static final float EXPLOSION_DAMAGE_VS_ALLIES_MODIFIER = .25f;
     private static final float EXPLOSION_EMP_DAMAGE_AMOUNT = 5000f;
@@ -60,7 +59,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
     public static final Color AFTERIMAGE_COLOR = new Color(255, 196, 19, 20);
     private static final Vector2f ZERO = new Vector2f();
 
-    // AI teleport parameters
+
     private static final float TELEPORT_SPEED = 4000f;
     private static final float MIN_TELEPORT_DISTANCE = 100f;
     private static final float MAX_TELEPORT_DISTANCE = 4000;
@@ -75,7 +74,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
     private float novaTime = -1f;
     private SoundAPI sound = null;
 
-    // Teleport state
+
     private Vector2f teleportStartLocation = null;
     private Vector2f teleportTargetLocation = null;
     private Vector2f teleportVelocity = null;
@@ -98,11 +97,10 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
 
 
 
-        // Handle teleport movement during charge-up
         if (state == State.IN) {
             handleTeleportMovement(ship, engine, effectLevel);
 
-            // Only show visual effects if we're actually charging (not teleporting yet)
+
             if (!teleportInProgress || teleportProgress < 0.5f) {
                 if (!isActive) {
                     isActive = true;
@@ -111,7 +109,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
                     light = new StandardLight();
                     light.setIntensity(1.25f);
                     light.setSize(EXPLOSION_VISUAL_RADIUS);
-                    light.setColor(PARTICLE_COLOR);
+                   // light.setColor(PARTICLE_COLOR);
                     light.fadeIn(1.95f);
                     light.setLifetime(0.1f);
                     light.setAutoFadeOutTime(0.17f);
@@ -138,7 +136,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
                 }
             }
         }
-        // Handle teleport completion
+
         else if (state == State.OUT) {
             completeTeleport(ship, engine);
 
@@ -189,7 +187,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
                     Global.getSoundPlayer().playSound(CHARGEUP_SOUND, 2f, 2f, ship.getLocation(), ship.getVelocity());
                 }
 
-                // Apply explosion damage and force
+
                 applyExplosionEffects(ship, engine);
                 ship.getFluxTracker().decreaseFlux(ship.getMaxFlux()/4);
 
@@ -197,12 +195,12 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
             }
         }
 
-        // Handle nova effects
+
         handleNovaEffects(ship, engine);
     }
 
     private void handleTeleportMovement(ShipAPI ship, CombatEngineAPI engine, float effectLevel) {
-        // Check if AI has set a teleport target using custom data
+
         if (!teleportInProgress) {
             Object customData = ship.getCustomData();
             if (customData instanceof Map) {
@@ -218,13 +216,12 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
                         teleportTargetLocation = new Vector2f(targetX, targetY);
                         teleportStartLocation = new Vector2f(ship.getLocation());
 
-                        // Calculate teleport parameters
+
                         float distance = MathUtils.getDistance(teleportStartLocation, teleportTargetLocation);
 
-                        // Clamp distance to valid range
                         distance = MathUtils.clamp(distance, MIN_TELEPORT_DISTANCE, MAX_TELEPORT_DISTANCE);
 
-                        // Calculate teleport velocity direction
+
                         teleportVelocity = Vector2f.sub(teleportTargetLocation, teleportStartLocation, null);
                         if (teleportVelocity.length() > 0) {
                             teleportVelocity.normalise();
@@ -236,7 +233,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
                         teleportStartTime = engine.getTotalElapsedTime(false);
                         teleportDuration = distance / TELEPORT_SPEED;
 
-                        // Remove teleport data to prevent repeated use
+
                         dataMap.remove("xdp_teleport_data");
 
                         {
@@ -305,48 +302,48 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
         }
 
 
-        // Execute teleport movement if in progress
+
         if (teleportInProgress) {
             teleportInterval.advance(engine.getElapsedInLastFrame());
 
-            // Calculate movement for this frame
+
             if (teleportInterval.intervalElapsed() && teleportVelocity != null) {
-                // Accelerate at start, decelerate at end
+
                 float progressRatio = teleportProgress;
                 float accelerationFactor = 1f;
 
                 if (progressRatio < 0.3f) {
-                    // Acceleration phase
+
                     accelerationFactor = progressRatio / 0.3f;
                 } else if (progressRatio > 0.7f) {
-                    // Deceleration phase
+
                     accelerationFactor = 1f - ((progressRatio - 0.7f) / 0.3f);
                 }
 
-                // Apply smoothed movement
+
                 Vector2f frameVelocity = new Vector2f(teleportVelocity);
                 frameVelocity.scale(accelerationFactor * engine.getElapsedInLastFrame());
 
-                // Move ship
+
                 Vector2f.add(ship.getLocation(), frameVelocity, ship.getLocation());
 
-                // Update progress
+
                 float distanceTraveled = frameVelocity.length();
                 float totalDistance = MathUtils.getDistance(teleportStartLocation, teleportTargetLocation);
                 teleportProgress = MathUtils.clamp(teleportProgress + (distanceTraveled / totalDistance), 0f, 1f);
 
-                // Create teleport trail particles
+
                 createTeleportTrail(ship, engine, accelerationFactor);
 
-                // If teleport complete, trigger early transition to OUT state
+
                 if (teleportProgress >= 0.95f) {
-                    // Snap to exact target location
+
                     ship.getLocation().set(teleportTargetLocation);
                     teleportProgress = 1f;
                 }
             }
 
-            // Update ship facing if specified by AI
+
             Object customData = ship.getCustomData();
             if (customData instanceof Map) {
                 Map<String, Object> dataMap = (Map<String, Object>) customData;
@@ -365,14 +362,14 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
     }
 
     private void createTeleportTrail(ShipAPI ship, CombatEngineAPI engine, float intensity) {
-        // Create particle trail behind ship
+
         Vector2f trailPos = MathUtils.getPointOnCircumference(
                 ship.getLocation(),
                 -ship.getCollisionRadius() * 0.8f,
                 ship.getFacing() + 180f
         );
 
-        // Main trail particle
+
         engine.addSmoothParticle(
                 trailPos,
                 new Vector2f(),
@@ -382,7 +379,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
                 PARTICLE_COLOR
         );
 
-        // Side particles
+
         for (int i = 0; i < 3; i++) {
             float angleOffset = (float) Math.random() * 60f - 30f;
             Vector2f sidePos = MathUtils.getPointOnCircumference(
@@ -403,21 +400,21 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
     }
 
     private void completeTeleport(ShipAPI ship, CombatEngineAPI engine) {
-        // Clean up teleport state
+
         if (teleportInProgress) {
-            // Ensure ship is at target location
+
             if (teleportTargetLocation != null) {
                 ship.getLocation().set(teleportTargetLocation);
             }
 
-            // Clear teleport state
+
             teleportInProgress = false;
             teleportStartLocation = null;
             teleportTargetLocation = null;
             teleportVelocity = null;
             teleportProgress = 0f;
 
-            // Clear AI custom data
+
             Object customData = ship.getCustomData();
             if (customData instanceof Map) {
                 Map<String, Object> dataMap = (Map<String, Object>) customData;
@@ -558,7 +555,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
 
     @Override
     public void unapply(MutableShipStatsAPI stats, String id) {
-        // Clean up any remaining state
+
         if (teleportInProgress) {
             teleportInProgress = false;
             teleportStartLocation = null;
@@ -567,7 +564,7 @@ public class xdp_PhaseTunnelerStats extends BaseShipSystemScript {
             teleportProgress = 0f;
         }
 
-        // Ensure ship custom data is cleared
+
         if (stats.getEntity() instanceof ShipAPI) {
             ShipAPI ship = (ShipAPI) stats.getEntity();
             Object customData = ship.getCustomData();

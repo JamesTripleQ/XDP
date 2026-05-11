@@ -52,5 +52,6 @@
     <orderEntry type="library" name="Graphics1" level="project" />
     <orderEntry type="library" name="lwjgl_util" level="project" />
     <orderEntry type="library" name="log4j-1.2.9" level="project" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>

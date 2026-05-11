@@ -22,3 +22,8 @@ Linked Hull,xdp_linkedhull,,,,,,,,TRUE,TRUE,0,0,0,0,neon.xdp.data.hullmods.XDP_L
 Massive Hull,xdp_massivehull,,,,codex_require_related,,,,TRUE,,0,0,0,0,neon.xdp.data.hullmods.XDP_MassiveHull,"This ship is extremely large, affording both a larger array of sensors and a heavy sensor profile. Increases sensor strength and sensor profile by %s.",Increases sensor strength and profile.,,graphics/hullmods/vast_bulk.png
 FIGHTER COLLISION CLASS,xdp_fightercoll,,,,"no_drop, restricted, no_build_in,",,,,TRUE,TRUE,0,0,0,0,neon.xdp.data.hullmods.XDP_SetFighterColl,,,,
 JETJETJETPLASMA,xdp_plasmajets,0,,,,,,,TRUE,TRUE,0,0,0,0,neon.xdp.data.hullmods.XDP_PlasmaJetsHullmod,,,,graphics/icons/intel/investigation.png
+,,,,,,,,,,,,,,,,,,,
+Advanced Explorarium,xdp_superderelict,,,,,,,,TRUE,,0,0,0,0,neon.xdp.data.hullmods.XDP_domain_era,"""The Explorarium probably involved the least human oversight of any Domain branch. Vast fronts of ancient, automated designs spreading out in all directions. Centuries of travel, alone, with only the rarest check-ups back home to see if the orders were still standing. Lots of time to think.
+
+This isn't some rearguard force catching up years after the fact, sir. Somebody's been tinkering.""",,,graphics/hullmods/xdp_superdelict.png
+Repair Dummy,xdp_rage_mod,,,,,,,,TRUE,TRUE,0,0,0,0,neon.xdp.data.hullmods.XDP_rage_mod,,,,

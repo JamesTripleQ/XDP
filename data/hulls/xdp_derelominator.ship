@@ -13,7 +13,9 @@
   "viewOffset": 0,
   "builtInMods": [
     "automated",
-    "do_not_back_off"
+    "do_not_back_off",
+	"xdp_superderelict",
+	"xdp_rage_mod"
   ],
   "builtInWeapons": {
     "WS0001": "miningblaster_builtin"

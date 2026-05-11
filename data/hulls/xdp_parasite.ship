@@ -14,7 +14,9 @@
   "builtInMods": [
     "automated",
     "xdp_shield",
-    "xdp_shield_arcing"
+    "xdp_shield_arcing",
+	"xdp_superderelict",
+	"xdp_rage_mod"
   ],
   "weaponSlots": [
     {

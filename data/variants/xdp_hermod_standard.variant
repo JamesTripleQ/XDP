@@ -3,7 +3,7 @@
   "hullId": "xdp_hermod",
   "displayName": "Standard",
   "goalVariant": true,
-  "fluxCapacitors": 10,
+  "fluxCapacitors": 18,
   "fluxVents": 30,
   "quality": 1,
   "permaMods": [],
@@ -33,38 +33,39 @@
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0012": "ionpulser",
-        "WS0015": "ionpulser"
+        "WS0009": "jackhammer",
+        "WS0010": "jackhammer"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0009": "phasebeam",
-        "WS0010": "phasebeam"
+        "WS0002": "phasebeam",
+        "WS0012": "heavyac",
+        "WS0015": "heavyac"
       }
     },
     {
       "autofire": true,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "heavymauler",
-        "WS0002": "flak",
+        "WS0001": "ionpulser",
+        "WS0011": "phasebeam",
+        "WS0014": "ionpulser"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
         "WS0003": "vulcan",
         "WS0004": "vulcan",
         "WS0005": "vulcan",
         "WS0006": "vulcan",
         "WS0007": "vulcan",
-        "WS0008": "vulcan",
-        "WS0011": "flak",
-        "WS0014": "heavymauler"
+        "WS0008": "vulcan"
       }
-    },
-    {
-      "autofire": true,
-      "mode": "LINKED",
-      "weapons": {}
     },
     {
       "autofire": false,

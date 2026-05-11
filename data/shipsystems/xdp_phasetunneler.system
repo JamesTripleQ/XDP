@@ -1,7 +1,8 @@
 {
     "id":"xdp_phasetunneler",
     "type":"TELEPORTER",
-    "aiType":"PHASE_TELEPORTER",
+    "aiType":"CUSTOM",
+	"aiScript":"neon.xdp.data.shipsystems.xdp_PhaseTeleporterAI",
     "statsScript":"neon.xdp.data.shipsystems.xdp_PhaseTunnelerStats",
 
     "jitterColor":[255,255,255,150],

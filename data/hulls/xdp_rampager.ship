@@ -17,7 +17,9 @@
     "distributed_fire_control",
     "dedicated_targeting_core",
     "xdp_shield",
-    "xdp_shield_arcing"
+    "xdp_shield_arcing",
+	"xdp_superderelict",
+	"xdp_rage_mod"
   ],
   "weaponSlots": [
     {
@@ -90,7 +92,7 @@
       "mount": "TURRET",
       "arc": 120,
       "angle": -139.5,
-      "locations": [-41, -89]
+      "locations": [-37, -89]
     },
     {
       "id": "WS0019",

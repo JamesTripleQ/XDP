@@ -8,17 +8,16 @@
   "width": 288,
   "center": [144, 124],
   "collisionRadius": 161,
-  "shieldCenter": [-24, -0],
+  "shieldCenter": [-15, -0],
   "shieldRadius": 180.5,
   "viewOffset": 0,
   "builtInMods": [
-    "high_maintenance",
-    "delicate",
+    "xdp_superderelict",
     "automated",
     "missile_autoloader",
     "xdp_shield",
     "xdp_shield_arcing",
-    "advancedshieldemitter"
+	"xdp_rage_mod"
   ],
   "builtInWeapons": {
     "WS0001": "shockrepeater",
@@ -129,7 +128,7 @@
     {
       "id": "WS0012",
       "size": "MEDIUM",
-      "type": "BALLISTIC",
+      "type": "SYNERGY",
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": -0,
@@ -138,7 +137,7 @@
     {
       "id": "WS0013",
       "size": "MEDIUM",
-      "type": "BALLISTIC",
+      "type": "SYNERGY",
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": 0,

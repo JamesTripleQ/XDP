@@ -15,7 +15,9 @@
     "automated",
     "delicate",
     "xdp_shield",
-    "xdp_shield_arcing"
+    "xdp_shield_arcing",
+	"xdp_superderelict",
+	"xdp_rage_mod"
   ],
   "builtInWeapons": {
     "WS0009": "xdp_mass_annihilator"

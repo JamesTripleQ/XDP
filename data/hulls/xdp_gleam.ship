@@ -5,7 +5,7 @@
   "spriteName": "graphics/ships/derelicts/xdp_gleam3.png",
   "style": "SUPERDERELICT",
   "height": 84,
-  "width": 76,
+  "width": 77,
   "center": [38, 42],
   "collisionRadius": 53,
   "shieldCenter": [0, 0],
@@ -13,8 +13,10 @@
   "viewOffset": 0,
   "builtInMods": [
     "automated",
+	"xdp_superderelict",
     "xdp_shield",
-    "xdp_shield_arcing"
+    "xdp_shield_arcing",
+	"xdp_rage_mod"
   ],
   "builtInWeapons": {
     "WS0001": "lidardish",
@@ -51,12 +53,12 @@
     },
     {
       "id": "WS0004",
-      "size": "MEDIUM",
-      "type": "HYBRID",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": 0,
-      "locations": [24, 26]
+      "locations": [24, 25]
     },
     {
       "id": "WS0006",
@@ -69,12 +71,12 @@
     },
     {
       "id": "WS0005",
-      "size": "MEDIUM",
-      "type": "HYBRID",
+      "size": "SMALL",
+      "type": "UNIVERSAL",
       "mount": "HARDPOINT",
       "arc": 5,
       "angle": 0,
-      "locations": [24, -26]
+      "locations": [24, -27]
     }
   ],
   "engineSlots": [
