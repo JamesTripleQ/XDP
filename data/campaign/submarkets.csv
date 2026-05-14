@@ -1,2 +1,4 @@
 id,name,faction,desc,script,icon,order
-,Mobile Storage,player,"Designed to be at the center of fleet operations, and has a dedicated storage for most armaments that considerably reduces the logistical burden on the fleet carrying them. It can also house some small craft.",neon.xdp_.data.econ.submarkets.xdp_MobileStoragePlugin,,800.05
+xdp_forgeshipmarket,Mothership,derelict,"Surplus materiel mined from within-system, and the augmented proxy drones that the forgeship churns out day after day.
+
+Commodities and weaponry are available for sale to any Dustkeeper collaborator. Automated ships are only sold to those with the expertise to use them.",neon.xdp.data.scripts.campaign.submarkets.XDP_MotherShipMarket,,0

@@ -146,6 +146,18 @@
     [
       {"file":"xdp_derelict_enc_neutral.ogg","source":"sounds/music","volume":1},
     ],
+	 "xdp_derelict_market_neutral":
+    [
+      {"file":"xdp_derelict_market_neutral.ogg","source":"sounds/music","volume":1},
+    ],
+	 "xdp_derelict_market_hostile":
+    [
+      {"file":"xdp_derelict_market_hostile.ogg","source":"sounds/music","volume":1},
+    ],
+	 "xdp_derelict_market_friendly":
+    [
+      {"file":"xdp_derelict_market_friendly.ogg","source":"sounds/music","volume":1},
+    ],
 
 
   },

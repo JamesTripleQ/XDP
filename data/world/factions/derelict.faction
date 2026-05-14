@@ -195,9 +195,9 @@
 	"music":{
 		#"encounter_hostile":"music_default_encounter_hostile",
 		"theme":"music_none",
-		"market_neutral":"xdp_derelict_enc_neutral",
-		"market_hostile":"xdp_derelict_enc_hostile",
-		"market_friendly":"xdp_derelict_enc_friendly",
+		"market_neutral":"xdp_derelict_market_neutral",
+		"market_hostile":"xdp_derelict_market_hostile",
+		"market_friendly":"xdp_derelict_market_friendly",
 		"encounter_neutral":"xdp_derelict_enc_neutral",
 		"encounter_hostile":"xdp_derelict_enc_hostile",
 		"encounter_friendly":"xdp_derelict_enc_friendly",

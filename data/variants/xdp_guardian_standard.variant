@@ -1,0 +1,87 @@
+{
+  "variantId": "xdp_guardian_standard",
+  "hullId": "xdp_guardian",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 35,
+  "fluxVents": 50,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [
+    "fluxdistributor",
+    "fluxbreakers",
+    "heavyarmor",
+    "insulatedengine",
+    "autorepair",
+    "auxiliarythrusters",
+    "fluxcoil"
+  ],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS 007": "plasma",
+        "WS 008": "plasma"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS 006": "locust",
+        "WS 009": "locust"
+      }
+    },
+    {
+      "autofire": false,
+      "mode": "ALTERNATING",
+      "weapons": {
+        "WS 004": "pulselaser",
+        "WS 005": "pulselaser"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS 010": "heavyac",
+        "WS 011": "heavyac"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "ioncannon",
+        "WS0002": "ioncannon"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS 000": "pdburst",
+        "WS 001": "pdburst",
+        "WS 002": "pdburst",
+        "WS 003": "pdburst",
+        "WS 014": "pdlaser",
+        "WS 015": "pdlaser",
+        "WS 016": "pdlaser",
+        "WS 017": "pdlaser",
+        "WS 018": "pdlaser",
+        "WS 019": "pdlaser",
+        "WS 020": "guardian",
+        "WS0003": "pdlaser",
+        "WS0004": "pdlaser"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {}
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

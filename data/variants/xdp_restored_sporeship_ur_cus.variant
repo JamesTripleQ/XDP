@@ -36,8 +36,8 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0007": "swp_tornado",
-        "WS0008": "swp_hornet"
+        "WS0007": "heavymauler",
+        "WS0008": "heavymauler"
       }
     },
     {

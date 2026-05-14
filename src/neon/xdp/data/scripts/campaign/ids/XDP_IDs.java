@@ -20,4 +20,10 @@ public class XDP_IDs {
 	public static final String BETA_CORE_XDP = "beta_core_xdp";
 	public static final String ALPHA_CORE_XDP = "alpha_core_xdp";
 
+	public static String CENTRAL_PROCESSING = "xdp_centralprocessing";
+
+	public static String FORGESHIP_MARKET = "xdp_forgeshipmarket";
+
+	public static String DEFENSIVE_DRONESYSTEM = "xdp_defensive_drones";
+
 }

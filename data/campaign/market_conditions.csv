@@ -1,0 +1,3 @@
+name,id,tags,planetary,decivRemove,script,desc,icon,order
+Defensive Dronesystem,xdp_defensive_drones,codex_unlockable,TRUE,,neon.xdp.data.scripts.DefensiveDronesCondition,,graphics/icons/markets/outpost.png,5007
+,,,,,,,,

@@ -2,15 +2,22 @@ package neon.xdp.data.scripts;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
+import com.fs.starfarer.api.campaign.econ.MarketAPI;
 import com.fs.starfarer.api.impl.campaign.ids.*;
+import com.fs.starfarer.api.impl.campaign.intel.deciv.DecivTracker;
 import com.fs.starfarer.api.impl.campaign.procgen.DefenderDataOverride;
+import com.fs.starfarer.api.impl.campaign.submarkets.StoragePlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
+import neon.xdp.data.scripts.campaign.ids.XDP_IDs;
+import neon.xdp.data.scripts.world.vigil.XDP_HoldoutDemandNegator;
 import org.lwjgl.util.vector.Vector2f;
 
 import java.awt.*;
+
+import static com.fs.starfarer.api.impl.campaign.ids.Commodities.ALPHA_CORE;
 
 public class XDP_gate implements SectorGeneratorPlugin {
 	public static String NOT_RANDOM_MISSION_TARGET = "$not_random_mission_target";
@@ -247,16 +254,6 @@ public class XDP_gate implements SectorGeneratorPlugin {
 						300 // Maxmimum fleet points for the defenders
 				));
 
-		SectorEntityToken mothership = system.addCustomEntity(
-				"xdp_mothership",
-				"Explorarium Mothership",
-				"derelict_mothership",
-				"derelict");
-		mothership.setCircularOrbitPointingDown(fueldepot, 270, 500, 400);
-		mothership.setCustomDescriptionId("xdp_mothership");
-		mothership.addTag("xdp_mothershiptag");
-		mothership.getMemoryWithoutUpdate().set("$xdp_mothershiptag", true);
-
 		SectorEntityToken surveyship = system.addCustomEntity(
 				"xdp_surveyship",
 				"Explorarium Survey Ship",
@@ -287,6 +284,82 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		jumpPointBeta.setStandardWormholeToHyperspaceVisual();
 		system.addEntity(jumpPointBeta);
 		system.autogenerateHyperspaceJumpPoints(true, true);
+
+		//
+		// BEGIN FORGESHIP
+		//
+
+		SectorEntityToken station = system.addCustomEntity("xdp_holdout", "Active Derelict Mothership", "xdp_mothership", Factions.DERELICT);
+		station.setCircularOrbitPointingDown(system.getEntityById("xdp_fueldepot"), 45, 650, 50);
+		station.setSensorProfile(1f);
+		station.setDiscoverable(true);
+		station.getDetectedRangeMod().modifyFlat("gen", 5000f);
+		Misc.setDefenderOverride(
+				station,//Code name foir the entity
+				new DefenderDataOverride("derelict", //code name for the faction doing the defender
+						1f, //Probibility there will be defenders
+						240, // Minimum fleet points for the defenders
+						300 // Maxmimum fleet points for the defenders
+				));
+
+		MarketAPI market = Global.getFactory().createMarket("xdp_holdout_market", station.getName(), 3);
+		market.setFactionId(Factions.DERELICT);
+		market.setHidden(true);
+
+		market.setSurveyLevel(MarketAPI.SurveyLevel.FULL);
+		market.setPrimaryEntity(station);
+
+		market.addIndustry(XDP_IDs.CENTRAL_PROCESSING);
+		market.addIndustry(Industries.SPACEPORT);
+		market.addIndustry(Industries.WAYSTATION);
+		market.addIndustry(Industries.HEAVYINDUSTRY);
+		market.addIndustry(Industries.HEAVYBATTERIES);
+
+		market.addCondition(XDP_IDs.DEFENSIVE_DRONESYSTEM);
+
+		market.addSubmarket(XDP_IDs.FORGESHIP_MARKET);
+		market.addSubmarket(Submarkets.SUBMARKET_STORAGE);
+		market.addSubmarket(Submarkets.LOCAL_RESOURCES);
+
+		market.getMemoryWithoutUpdate().set("$noBar", true);
+
+		// forgeship submarket has no tariff tho
+		market.getTariff().modifyFlat("default_tariff", market.getFaction().getTariffFraction());
+
+		station.setMarket(market);
+
+		market.setEconGroup(market.getFactionId());
+		market.getMemoryWithoutUpdate().set(DecivTracker.NO_DECIV_KEY, true);
+		market.addTag(Tags.MARKET_NO_OFFICER_SPAWN); // otherwise we get "human" Dustkeeper officers/admins
+
+		market.reapplyIndustries();
+
+		Global.getSector().getEconomy().addMarket(market, false);
+
+		market.removeSubmarket(Submarkets.GENERIC_MILITARY);
+		StoragePlugin storage = (StoragePlugin)market.getSubmarket(Submarkets.SUBMARKET_STORAGE).getPlugin();
+		if (storage != null) {
+			storage.setPlayerPaidToUnlock(true);
+		}
+
+		CommDirectoryAPI directory = market.getCommDirectory();
+		//directory.addPerson(XDP_People.getPerson(XDP_People.INVICTA));
+
+		//XDP_People.getPerson(XDP_People.INVICTA).setMarket(market);
+
+		// put in Cerulean as the admin
+		market.setAdmin(XDP_People.getPerson(ALPHA_CORE));
+
+		// need a script to automatically fulfil Holdout's demand (akin to pirate bases' "Brought in by raiders")
+		Global.getSector().getEconomy().addUpdateListener(new XDP_HoldoutDemandNegator(market));
+		// script to spawn fleets from Holdout
+		system.addScript(new XDP_HoldoutDemandNegator(market));
+		Misc.makeStoryCritical(market, "xdp_forgeship_protected");
+
+		//
+		// END FORGESHIP
+		//
+
 
 	}
 }

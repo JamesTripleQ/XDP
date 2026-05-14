@@ -1,0 +1,2 @@
+id,name,cost mult,build time,income,upkeep,downgrade,upgrade,tags,data,image,plugin,desc,order
+xdp_centralprocessing,Central Processing,,,0,3,,,"population, unraidable, no_saturation_bombardment, codex_unlockable",,graphics/icons/industry/cryosanctum.png,neon.xdp.data.scripts.campaign.econ.industries.XDP_CentralProcessing,"Being entirely automated, this station has no population, instead replaced by a massive computing network, subdivided into many artifical minds that manage it with superhuman efficiency.",100

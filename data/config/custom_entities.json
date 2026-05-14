@@ -1,0 +1,28 @@
+{
+
+ "xdp_mothership":{
+		"defaultName":"Derelict Mothership", # used if name=null in addCustomEntity()
+		"nameInText":"Derelict mothership",
+		"shortName":"mothership",
+		"aOrAn":"a",
+		"isOrAre":"is",
+		"defaultRadius":67, # used if radius<0 in addCustomEntity()
+		"customDescriptionId":"xdp_mothership",
+		"interactionImage":"graphics/illustrations/space_wreckage.jpg",
+		"icon":"graphics/icons/station0.png",
+		"iconWidth":32,
+		"iconHeight":32,
+		"sprite":"graphics/stations/survey_mothership.png",
+		"spriteWidth":90,
+		"spriteHeight":90,
+		"renderShadow":true,
+		"useLightColor":true,
+		"showInCampaign":true,
+		"showIconOnMap":true,
+		"showNameOnMap":false,
+		"scaleNameWithZoom":false,
+		"scaleIconWithZoom":true,
+		"tags":["station"],
+		"layers":[STATIONS], # what layer(s) to render in. See CampaignEngineLayers.java for possible values
+	},
+}
