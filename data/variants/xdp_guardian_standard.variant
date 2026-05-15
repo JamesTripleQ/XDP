@@ -3,18 +3,15 @@
   "hullId": "xdp_guardian",
   "displayName": "Standard",
   "goalVariant": true,
-  "fluxCapacitors": 35,
+  "fluxCapacitors": 28,
   "fluxVents": 50,
   "quality": 1,
   "permaMods": [],
   "hullMods": [
-    "fluxdistributor",
     "fluxbreakers",
-    "heavyarmor",
     "insulatedengine",
     "autorepair",
-    "auxiliarythrusters",
-    "fluxcoil"
+	"armoredweapons"
   ],
   "weaponGroups": [
     {

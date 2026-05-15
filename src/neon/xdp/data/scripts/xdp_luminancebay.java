@@ -40,7 +40,7 @@ public class xdp_luminancebay implements MissileAIPlugin, GuidedMissileAI {
                 missile.setArmingTime(0f);
                 CombatFleetManagerAPI cfm = engine.getFleetManager(1);
                 cfm.setSuppressDeploymentMessages(true);
-                ShipAPI pod = cfm.spawnShipOrWing("nsp_parasite_standard",missile.getLocation(),0f);
+                ShipAPI pod = cfm.spawnShipOrWing("xdp_parasite_standard",missile.getLocation(),0f);
                 pod.setOwner(missile.getSource().getOriginalOwner());
                 pod.setFacing(missile.getFacing());
                 pod.getVelocity().set(missile.getVelocity());

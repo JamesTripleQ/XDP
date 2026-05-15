@@ -16,7 +16,7 @@
 	"clampTurnRateAfter":true,
 	"clampMaxSpeedAfter":false,
 
-	"useSound":"pmm_synth_dash",
+	"useSound":"gun_out_of_ammo",
 	"loopSound":"system_maneuvering_jets_loop",
 	"outOfUsesSound":"gun_out_of_ammo",
 	

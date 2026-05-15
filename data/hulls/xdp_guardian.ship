@@ -17,7 +17,8 @@
     "xdp_shield_arcing",
     "xdp_rage_mod",
     "xdp_superderelict",
-    "coherer"
+    "coherer",
+    "distributed_fire_control"
   ],
   "weaponSlots": [
     {
