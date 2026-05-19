@@ -6,10 +6,10 @@
   "size": "LARGE",
   "displayArcRadius": 450,
   "turretSprite": "graphics/weapons/xdp_angurvadal_turret_base.png",
-  "turretGunSprite": "graphics/weapons/nsp_angurvadal_turret_recoil.png",
+  "turretGunSprite": "graphics/weapons/xdp_angurvadal_turret_recoil.png",
   "turretUnderSprite": "graphics/weapons/xdp_angurvadal_turret_under.png",
   "hardpointSprite": "graphics/weapons/xdp_angurvadal_hardpoint_base.png",
-  "hardpointGunSprite": "graphics/weapons/nsp_angurvadal_hardpoint_recoil.png",
+  "hardpointGunSprite": "graphics/weapons/xdp_angurvadal_hardpoint_recoil.png",
   "hardpointUnderSprite": "graphics/weapons/xdp_angurvadal_hardpoint_under.png",
   "visualRecoil": 10,
   "renderHints": [
