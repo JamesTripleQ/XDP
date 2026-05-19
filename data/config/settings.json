@@ -19,6 +19,9 @@
         },
 		"blueprint_packages":{
 		},
+		 "xdp_trails":{
+            "xdp_dirtytrail":"graphics/fx/xdp_dirtytrail.png",
+        },
 		
 		"abilities":{
 		},

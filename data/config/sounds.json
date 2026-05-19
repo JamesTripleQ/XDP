@@ -158,6 +158,19 @@
     [
       {"file":"xdp_derelict_market_friendly.ogg","source":"sounds/music","volume":1},
     ],
+	  "xdp_boss_canistercannon_split":{
+        "sounds":[
+            {"file":"sounds/sfx_impacts/explosion_missile_01.ogg","pitch":0.76,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_01.ogg","pitch":0.77,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_01.ogg","pitch":0.78,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_01.ogg","pitch":0.79,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_01.ogg","pitch":0.80,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_02.ogg","pitch":0.76,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_02.ogg","pitch":0.77,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_02.ogg","pitch":0.78,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_02.ogg","pitch":0.79,"volume":1.0},
+            {"file":"sounds/sfx_impacts/explosion_missile_02.ogg","pitch":0.80,"volume":1.0},
+        ],
 
 
   },

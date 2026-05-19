@@ -19,7 +19,8 @@
     "xdp_superderelict",
     "missile_autoloader",
     "do_not_back_off",
-	"xdp_rage_mod"
+    "xdp_rage_mod",
+    "distributed_fire_control"
   ],
   "weaponSlots": [
     {

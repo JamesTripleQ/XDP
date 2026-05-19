@@ -13,7 +13,7 @@ public class xdp_ChronoBoostStats extends BaseShipSystemScript {
 
     public static final Color JITTER_COLOR = new Color(165, 90, 255, 10);
     public static final Color JITTER_UNDER_COLOR = new Color(165, 90, 255, 200);
-    public static final float MAX_TIME_MULT = 3f;
+    public static final float MAX_TIME_MULT = 4.5f;
     public static final float MIN_TIME_MULT = 0.1f;
 
     private float totalDurationWarped = 0f;

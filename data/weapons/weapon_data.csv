@@ -48,6 +48,8 @@ Pusher Plate (Small),xdp_pusherplate_small,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM
 Pusher Plate (Tiny),xdp_pusherplate_tiny,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,pusherplate,,,,,,,,,,,,,,42.75
 Hermod Deco,xdp_hermod_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,42.5
 Shrisse Deco,xdp_shrisse_deco,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,42.5
+Inachus Deco 1,xdp_inachus_deco1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,42.5
+Inachus Deco 2,xdp_inachus_deco2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,42.5
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #REPLEVIN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 Salvage Beam,xdp_replevin_builtin,1,,4500,900,500,,,0,20,20,,,,HIGH_EXPLOSIVE,,300,0.1,0.1,,,,,,,2400,,,,,,,,"beam20, LR, no_drop, no_drop_salvage, restricted",,Explorarium,,Anti Armor,,,,,,,,,,24

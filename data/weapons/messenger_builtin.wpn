@@ -5,11 +5,12 @@
   "type": "BALLISTIC",
   "size": "LARGE",
   "turretSprite": "graphics/weapons/messenger_builtin_base.png",
-  "turretGuxdp_rite": "graphics/weapons/messenger_builtin_recoil.png",
-  "turretUnderSprite": "",
+  "turretGunSprite": "graphics/weapons/messenger_builtin_recoil.png",
   "hardpointSprite": "",
   "visualRecoil": 8,
-  "renderHints":[RENDER_BARREL_BELOW],
+  "renderHints": [
+    RENDER_BARREL_BELOW
+  ],
   "turretOffsets": [
     53,
     -6,

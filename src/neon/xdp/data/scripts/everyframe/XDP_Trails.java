@@ -162,7 +162,7 @@ public class XDP_Trails extends BaseEveryFrameCombatPlugin {
                         MagicTrailPlugin.addTrailMemberAdvanced(
                                 proj, /* linkedEntity */
                                 data.id, /* ID */
-                                Global.getSettings().getSprite("swp_trails", "swp_fuzzytrail"), /* sprite */
+                                Global.getSettings().getSprite("xdp_trails", "xdp_fuzzytrail"), /* sprite */
                                 spawnPosition, /* position */
                                 0f, /* startSpeed */
                                 0f, /* endSpeed */
@@ -190,7 +190,7 @@ public class XDP_Trails extends BaseEveryFrameCombatPlugin {
                         MagicTrailPlugin.addTrailMemberAdvanced(
                                 proj, /* linkedEntity */
                                 data.id2, /* ID */
-                                Global.getSettings().getSprite("swp_trails", "swp_dirtytrail"), /* sprite */
+                                Global.getSettings().getSprite("xdp_trails", "xdp_dirtytrail"), /* sprite */
                                 spawnPosition, /* position */
                                 0f, /* startSpeed */
                                 0f, /* endSpeed */
@@ -232,7 +232,7 @@ public class XDP_Trails extends BaseEveryFrameCombatPlugin {
                         MagicTrailPlugin.addTrailMemberAdvanced(
                                 proj, /* linkedEntity */
                                 data.id, /* ID */
-                                Global.getSettings().getSprite("swp_trails", "swp_dirtytrail"), /* sprite */
+                                Global.getSettings().getSprite("xdp_trails", "xdp_dirtytrail"), /* sprite */
                                 spawnPosition, /* position */
                                 0f, /* startSpeed */
                                 0f, /* endSpeed */
@@ -288,7 +288,7 @@ public class XDP_Trails extends BaseEveryFrameCombatPlugin {
         if (Global.getCombatEngine() != null) {
             if (!Global.getCombatEngine().getCustomData().containsKey(DATA_KEY)) {
                 Global.getCombatEngine().getCustomData().put(DATA_KEY, new LocalData());
-                Global.getCombatEngine().addPlugin(new XDP_Trails()); // Changed from SWP_Trails to NSP_Trails
+                Global.getCombatEngine().addPlugin(new XDP_Trails());
             }
         }
     }

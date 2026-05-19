@@ -22,7 +22,9 @@
     "invicta_assignment",
     "reduced_explosion",
     "xdp_massivehull",
-    "eccm"
+    "eccm",
+    "xdp_superderelict",
+    "xdp_rage_mod"
   ],
   "builtInWings": [
     "xdp_derelictfighter",

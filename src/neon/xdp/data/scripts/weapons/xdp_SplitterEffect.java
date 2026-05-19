@@ -23,23 +23,23 @@ import org.lwjgl.util.vector.Vector2f;
 
 public class xdp_SplitterEffect implements EveryFrameWeaponEffectPlugin, OnFireEffectPlugin {
 
-    private static final String DATA_KEY_PREFIX = "NSP_SplitterWeapon_";
+    private static final String DATA_KEY_PREFIX = "XDP_SplitterWeapon_";
 
     private static final float CANISTER_DEFAULT_RANGE = 3000f;
     private static final float CANISTER_DEFAULT_SPEED = 700f;
     private static final Color CANISTER_DETONATION_COLOR = new Color(255, 100, 75, 255);
     private static final float CANISTER_DETONATION_DURATION = 1f;
     private static final float CANISTER_DETONATION_SIZE = 200f;
-    private static final String CANISTER_DETONATION_SOUND_ID = "swp_boss_canistercannon_split";
+    private static final String CANISTER_DETONATION_SOUND_ID = "xdp_boss_canistercannon_split";
     private static final float CANISTER_FUSE_DISTANCE = 500f;
     private static final Color CANISTER_PARTICLE_COLOR = new Color(255, 150, 150, 255);
     private static final int CANISTER_PARTICLE_COUNT = 100;
-    private static final String CANISTER_PROJECTILE_ID = "nsp_restored_sporeship_canistercannon_shot"; // Fixed: Changed from SWP to NSP
+    private static final String CANISTER_PROJECTILE_ID = "xdp_restored_sporeship_canistercannon_shot"; // Fixed: Changed from SWP to NSP
     private static final float CANISTER_SPLIT_DISTANCE = 300f;
     private static final float CANISTER_SPREAD_FORCE_MAX = 300f;
     private static final float CANISTER_SPREAD_FORCE_MIN = 100f;
     private static final int CANISTER_SUBMUNITIONS = 20;
-    private static final String CANISTER_SUBMUNITION_WEAPON_ID = "nsp_sporeship_canister_sub_shot"; // Fixed: Changed from SWP to NSP
+    private static final String CANISTER_SUBMUNITION_WEAPON_ID = "xdp_sporeship_canister_sub_shot"; // Fixed: Changed from SWP to NSP
 
     private static final float ORIGINAL_PROJECTILE_DAMAGE_MULTIPLIER = 0.5f;
 
