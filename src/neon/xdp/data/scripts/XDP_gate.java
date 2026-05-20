@@ -1,19 +1,25 @@
 package neon.xdp.data.scripts;
 
+import com.fs.starfarer.api.EveryFrameScript;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.*;
 import com.fs.starfarer.api.campaign.econ.MarketAPI;
+import com.fs.starfarer.api.campaign.listeners.FleetEventListener;
 import com.fs.starfarer.api.impl.campaign.ids.*;
 import com.fs.starfarer.api.impl.campaign.intel.deciv.DecivTracker;
 import com.fs.starfarer.api.impl.campaign.procgen.DefenderDataOverride;
 import com.fs.starfarer.api.impl.campaign.submarkets.StoragePlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.HyperspaceTerrainPlugin;
 import com.fs.starfarer.api.impl.campaign.terrain.MagneticFieldTerrainPlugin;
+import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import com.fs.starfarer.api.impl.campaign.procgen.NebulaEditor;
+import neon.xdp.data.plugins.XDPModPlugin;
 import neon.xdp.data.scripts.campaign.ids.XDP_IDs;
 import neon.xdp.data.scripts.world.vigil.XDP_HoldoutDemandNegator;
+import org.apache.log4j.Logger;
 import org.lwjgl.util.vector.Vector2f;
+import org.magiclib.util.MagicCampaign;
 
 import java.awt.*;
 
@@ -61,7 +67,8 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		system.addAsteroidBelt(gate, 300, 9000, 1000, 160, 220); // Ring system located between inner and outer planets
 		system.addRingBand(gate, "misc", "rings_asteroids0", 256f, 1, Color.white, 256f, 8900, 200f, null, null);
 		system.addRingBand(gate, "misc", "rings_dust0", 256f, 1, Color.white, 256f, 9000, 200f, null, null);
-		PlanetAPI fueldepot = system.addPlanet("xdp_fueldepot", gate, "DESIGNATION FFL-217-PS-RN", "gas_giant", 50, 300, 6000, 400);
+
+        PlanetAPI fueldepot = system.addPlanet("xdp_fueldepot", gate, "DESIGNATION FFL-217-PS-RN", "gas_giant", 50, 300, 6000, 400);
 		fueldepot.setCustomDescriptionId("xdp_fueldepot");
 		fueldepot.getMarket().addCondition(Conditions.HIGH_GRAVITY);
 		fueldepot.getMarket().addCondition(Conditions.VOLATILES_PLENTIFUL);
@@ -86,13 +93,13 @@ public class XDP_gate implements SectorGeneratorPlugin {
 						new Color(75, 90, 160, 255),
 						new Color(100, 200, 200, 240)));
 		field.setCircularOrbit(fueldepot, 0, 0, 75);
-		Misc.setDefenderOverride(
-				fueldepot,//Code name foir the entity
-				new DefenderDataOverride("derelict", //code name for the faction doing the defender
-						1f, //Probibility there will be defenders
-						150, // Minimum fleet points for the defenders
-						200 // Maxmimum fleet points for the defenders
-				));
+//		Misc.setDefenderOverride(
+//				fueldepot,//Code name foir the entity
+//				new DefenderDataOverride("derelict", //code name for the faction doing the defender
+//						1f, //Probibility there will be defenders
+//						150, // Minimum fleet points for the defenders
+//						200 // Maxmimum fleet points for the defenders
+//				));
 
 
 		PlanetAPI manufacturingcenter2 = system.addPlanet("xdp_manufacturingcenter2", fueldepot, "DESIGNATION MNG-5541-PS-RN", "barren_castiron", 50, 60, 720, 90);
@@ -122,13 +129,13 @@ public class XDP_gate implements SectorGeneratorPlugin {
 						new Color(75, 90, 160, 255),
 						new Color(100, 200, 200, 240)));
 		field2.setCircularOrbit(fueldepot, 0, 0, 75);
-		Misc.setDefenderOverride(
-				manufacturingcenter2,//Code name foir the entity
-				new DefenderDataOverride("derelict", //code name for the faction doing the defender
-						1f, //Probibility there will be defenders
-						190, // Minimum fleet points for the defenders
-						300 // Maxmimum fleet points for the defenders
-				));
+//		Misc.setDefenderOverride(
+//				manufacturingcenter2,//Code name foir the entity
+//				new DefenderDataOverride("derelict", //code name for the faction doing the defender
+//						1f, //Probibility there will be defenders
+//						190, // Minimum fleet points for the defenders
+//						300 // Maxmimum fleet points for the defenders
+//				));
 
 
 		SectorEntityToken anchor = system.getHyperspaceAnchor();
@@ -156,12 +163,12 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		//float respawnDelay, //(How long it takes for a fleet to spawn in days up to max fleets)
 		//int minPts, //(How small the fleet can be)
 		//int maxPts) //(How large the fleet can be)
-		
+
 		//Or, written in this form:
 		//system.addScript(new SuperDerelictSeededFleetManager(entity, thresholdLY, minFleets, maxFleets, respawnDelay, minPts, maxPts));
 		//For example:
-		
-		
+
+
 
 		SectorEntityToken VigilRelay = system.addCustomEntity(null, "Comm Relay", "comm_relay", "derelict");
 		VigilRelay.setCircularOrbit(gate, 190, 7000, 280);
@@ -179,13 +186,13 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		manufacturingcenter.getMarket().addCondition(Conditions.ORE_RICH);
 		manufacturingcenter.getMarket().getMemoryWithoutUpdate().set(NOT_RANDOM_MISSION_TARGET, true);
 		manufacturingcenter.getMemoryWithoutUpdate().set("$xdp_manufacturingcentertag", true);
-		Misc.setDefenderOverride(
-				manufacturingcenter,//Code name foir the entity
-				new DefenderDataOverride("derelict", //code name for the faction doing the defender
-						1f, //Probibility there will be defenders
-						150, // Minimum fleet points for the defenders
-						300 // Maxmimum fleet points for the defenders
-				));
+//		Misc.setDefenderOverride(
+//				manufacturingcenter,//Code name foir the entity
+//				new DefenderDataOverride("derelict", //code name for the faction doing the defender
+//						1f, //Probibility there will be defenders
+//						150, // Minimum fleet points for the defenders
+//						300 // Maxmimum fleet points for the defenders
+//				));
 
 
 		PlanetAPI habplanet = system.addPlanet("xdp_habplanet", gate, "DESIGNATION HBT-1030789-PS-RN", "terran-eccentric", 50, 75, 5900, 90);
@@ -197,13 +204,13 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		habplanet.getMarket().addCondition(Conditions.MILD_CLIMATE);
 		habplanet.getMarket().getMemoryWithoutUpdate().set(NOT_RANDOM_MISSION_TARGET, true);
 		habplanet.getMemoryWithoutUpdate().set("$xdp_habplanettag", true);
-		Misc.setDefenderOverride(
-				habplanet,//Code name foir the entity
-				new DefenderDataOverride("derelict", //code name for the faction doing the defender
-						1f, //Probibility there will be defenders
-						150, // Minimum fleet points for the defenders
-						300 // Maxmimum fleet points for the defenders
-				));
+//		Misc.setDefenderOverride(
+//				habplanet,//Code name foir the entity
+//				new DefenderDataOverride("derelict", //code name for the faction doing the defender
+//						1f, //Probibility there will be defenders
+//						150, // Minimum fleet points for the defenders
+//						300 // Maxmimum fleet points for the defenders
+//				));
 
 
 		PlanetAPI fringeworld = system.addPlanet("xdp_fringeworld", gate, "DESIGNATION HBT-1030799-PS-RN-FL", "cryovolcanic", 50, 50, 12000, 450);
@@ -211,18 +218,18 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		fringeworld.getMarket().addCondition(Conditions.EXTREME_WEATHER);
 		fringeworld.getMarket().addCondition(Conditions.VERY_COLD);
 		fringeworld.getMarket().addCondition(Conditions.RUINS_SCATTERED);
-		fueldepot.getMarket().addCondition(Conditions.TECTONIC_ACTIVITY);
-		habplanet.getMarket().addCondition(Conditions.FARMLAND_ADEQUATE);
-		habplanet.getMarket().addCondition(Conditions.ORE_SPARSE);
-		habplanet.getMarket().getMemoryWithoutUpdate().set(NOT_RANDOM_MISSION_TARGET, true);
-		habplanet.getMemoryWithoutUpdate().set("$xdp_fringeworldtag", true);
-		Misc.setDefenderOverride(
-				fringeworld,//Code name foir the entity
-				new DefenderDataOverride("derelict", //code name for the faction doing the defender
-						1f, //Probibility there will be defenders
-						150, // Minimum fleet points for the defenders
-						300 // Maxmimum fleet points for the defenders
-				));
+        fringeworld.getMarket().addCondition(Conditions.TECTONIC_ACTIVITY);
+        fringeworld.getMarket().addCondition(Conditions.FARMLAND_ADEQUATE);
+        fringeworld.getMarket().addCondition(Conditions.ORE_SPARSE);
+        fringeworld.getMarket().getMemoryWithoutUpdate().set(NOT_RANDOM_MISSION_TARGET, true);
+        fringeworld.getMemoryWithoutUpdate().set("$xdp_fringeworldtag", true);
+//		Misc.setDefenderOverride(
+//				fringeworld,//Code name foir the entity
+//				new DefenderDataOverride("derelict", //code name for the faction doing the defender
+//						1f, //Probibility there will be defenders
+//						150, // Minimum fleet points for the defenders
+//						300 // Maxmimum fleet points for the defenders
+//				));
 
 
 		SectorEntityToken deadgate = system.addCustomEntity(
@@ -294,13 +301,13 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		station.setSensorProfile(1f);
 		station.setDiscoverable(true);
 		station.getDetectedRangeMod().modifyFlat("gen", 5000f);
-		Misc.setDefenderOverride(
-				station,//Code name foir the entity
-				new DefenderDataOverride("derelict", //code name for the faction doing the defender
-						1f, //Probibility there will be defenders
-						240, // Minimum fleet points for the defenders
-						300 // Maxmimum fleet points for the defenders
-				));
+//		Misc.setDefenderOverride(
+//				station,//Code name foir the entity
+//				new DefenderDataOverride("derelict", //code name for the faction doing the defender
+//						1f, //Probibility there will be defenders
+//						240, // Minimum fleet points for the defenders
+//						300 // Maxmimum fleet points for the defenders
+//				));
 
 		MarketAPI market = Global.getFactory().createMarket("xdp_holdout_market", station.getName(), 3);
 		market.setFactionId(Factions.DERELICT);
@@ -354,6 +361,7 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		Global.getSector().getEconomy().addUpdateListener(new XDP_HoldoutDemandNegator(market));
 		// script to spawn fleets from Holdout
 		system.addScript(new XDP_HoldoutDemandNegator(market));
+		system.addScript(new HoldoutDefenseSpawner(market));
 		Misc.makeStoryCritical(market, "xdp_forgeship_protected");
 
 		//
@@ -361,6 +369,76 @@ public class XDP_gate implements SectorGeneratorPlugin {
 		//
 
 
+	}
+
+	class HoldoutDefenseSpawner implements EveryFrameScript, FleetEventListener {
+		private final IntervalUtil spawnTimer = new IntervalUtil(5f, 5f); // Days till it respawns
+		private boolean fleetIsAlive = false;
+		private boolean instantSpawn;
+
+		private final MarketAPI market;
+
+		public HoldoutDefenseSpawner(MarketAPI market) {
+			this.market = market;
+			instantSpawn = true;
+		}
+
+		@Override
+		public boolean isDone() {
+			return false;
+		}
+
+		@Override
+		public boolean runWhilePaused() {
+			return false;
+		}
+
+		@Override
+		public void advance(float amount) {
+			if (market == null) return;
+			if (!market.getFactionId().equals(Factions.DERELICT)) return;
+
+			if (instantSpawn) {
+				spawnFleet();
+				instantSpawn = false;
+			}
+
+			if (fleetIsAlive) return;
+
+			spawnTimer.advance(Global.getSector().getClock().convertToDays(amount));
+
+			if (spawnTimer.intervalElapsed()) {
+				spawnFleet();
+			}
+		}
+
+		private void spawnFleet() {
+            // Customize the fleet here, you don't have to use magic campaign
+			 CampaignFleetAPI fleet = MagicCampaign.createFleetBuilder()
+					.setFleetName("Holdout Defense Fleet")
+					.setFleetFaction(Factions.DERELICT)
+					.setFleetType(FleetTypes.PATROL_LARGE)
+					.setMinFP(400)
+					.setSpawnLocation(market.getPrimaryEntity())
+					.setAssignment(FleetAssignment.DEFEND_LOCATION)
+					.setAssignmentTarget(market.getPrimaryEntity())
+					.create();
+
+
+             // Do not touch these
+             fleet.setNoAutoDespawn(true);
+             fleet.addEventListener(this);
+
+			fleetIsAlive = true;
+		}
+
+		@Override
+		public void reportFleetDespawnedToListener(CampaignFleetAPI fleet, CampaignEventListener.FleetDespawnReason reason, Object param) {
+            fleetIsAlive = false;
+		}
+
+		@Override
+		public void reportBattleOccurred(CampaignFleetAPI fleet, CampaignFleetAPI primaryWinner, BattleAPI battle) {}
 	}
 }
 

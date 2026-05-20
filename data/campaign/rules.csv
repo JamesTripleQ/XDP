@@ -148,3 +148,11 @@ xdp_nexusStartRulecmd 6",,,
 #xdp_nex_marketPostOpenDerelicts,#xdp_nex_marketPostOpenDerelicts,#xdp_nex_marketPostOpenDerelicts,#xdp_nex_marketPostOpenDerelicts,#xdp_nex_marketPostOpenDerelicts,#xdp_nex_marketPostOpenDerelicts,#xdp_nex_marketPostOpenDerelicts
 #xdp_nex_marketOptionCommDirDerelicts,#xdp_nex_marketOptionCommDirDerelicts,#xdp_nex_marketOptionCommDirDerelicts,#xdp_nex_marketOptionCommDirDerelicts,#xdp_nex_marketOptionCommDirDerelicts,#xdp_nex_marketOptionCommDirDerelicts,#xdp_nex_marketOptionCommDirDerelicts
 ,,,,,,
+"# mothership market lock, unlock by settting $xdp_holdout_unlocked in global sector memory (not market memory)",,,,,,
+#xdp_holdoutLock,MarketPostOpen,"$market.id == xdp_holdout_market
+$faction.id == derelict
+$hasMarket
+!$global.xdp_holdout_unlocked score:1000","$tradeMode = NONE 0
+SetTextHighlightColors bad
+Highlight ""don't have access"" 
+FireBest MarketPostDock",You don't have access to this market because... uhhh... I have no idea.,,
