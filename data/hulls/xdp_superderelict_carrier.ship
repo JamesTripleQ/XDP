@@ -20,10 +20,6 @@
     "distributed_fire_control",
     "xdp_rage_mod"
   ],
-  "builtInWings": [
-    "xdp_cardinal",
-    "xdp_cardinal"
-  ],
   "builtInWeapons": {
     "WS0020": "xdp_inachus_deco2",
     "WS0021": "xdp_inachus_deco1"

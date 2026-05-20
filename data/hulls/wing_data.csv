@@ -3,7 +3,10 @@ xdp_gun_platform,xdp_gun_platform_standard,"no_sell, fighter, derelict, fighter5
 xdp_gun_platform2,xdp_gun_platform2_standard,"no_sell, fighter, derelict, fighter5, auto_fighter, merc",2,,6,18,BOX,1000,1000,600,2,FIGHTER,Artillery,20,20000,,,,,,,,,,,,,
 xdp_gun_platform3,xdp_gun_platform3_standard,"no_sell, interceptor, derelict, interceptor5, auto_fighter, merc",2,,6,14,BOX,1000,2000,750,2,INTERCEPTOR,Interceptor Drone,20,20000,,,,,,,,,,,,,
 xdp_derelictbomber,xdp_derelictbomber_standard,"no_sell, bomber, derelict, bomber5, auto_fighter, merc",1,,3,33,V,4000,800,450,3,BOMBER,Bomber,20,20000,,,,,,,,,,,,,10
-xdp_derelictfighter,xdp_derelictfighter_standard,"no_sell, fighter, derelict, fighter5, auto_fighter, merc",1,,3,28,CLAW,4000,2000,750,5,FIGHTER,Fighter,15,20000,,,,,,,,,,,,,10
-xdp_cardinal,xdp_cardinal_standard,"no_drop, no_sell, fighter, fighter5, auto_fighter, restricted",1,,3,40,V,4000,2500,750,3,FIGHTER,Fighter,15,60000,,,,,,,,,,,,,10
+xdp_derelictfighter,xdp_derelictfighter_standard,"no_sell, fighter, derelict, fighter5, auto_fighter, merc",1,,3,26,CLAW,4000,2000,750,5,FIGHTER,Fighter,15,20000,,,,,,,,,,,,,10
+xdp_cardinal,xdp_cardinal_standard,"no_drop, no_sell, fighter, fighter5, auto_fighter, restricted",1,,3,9999,V,4000,2500,750,3,FIGHTER,Fighter,30,60000,,,,,,,,,,,,,10
+xdp_cardinal_modular,xdp_cardinal_standard,"no_drop, no_sell, fighter, fighter5, auto_fighter, restricted",1,,3,50,BOX,4000,2500,750,1,FIGHTER,Fighter,30,60000,,,,,,,,,,,,,10
 xdp_gun_platform_builtin,xdp_gun_platform2_standard,"no_drop, no_sell, fighter, derelict, support3, auto_fighter, stay_in_front_of_ship",2,,6,0,BOX,600,600,600,4,SUPPORT,Artillery,12,20000,,,,,,,,,,,,,
 xdp_gun_platform_builtin2,xdp_gun_platform4_standard,"no_drop, no_sell, fighter, derelict, support3, auto_fighter, stay_in_front_of_ship",2,,6,0,V,600,600,750,3,SUPPORT,Mining,25,20000,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+xdp_superderelictfighter,xdp_superderelictfighter_standard,"no_sell, fighter, derelict, fighter5, auto_fighter, merc",1,,3,30,V,4000,2500,750,3,FIGHTER,Fighter,15,60000,,,,,,,,,,,,,10

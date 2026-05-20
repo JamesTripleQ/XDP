@@ -1,0 +1,32 @@
+{
+  "variantId": "xdp_superderelictfighter_standard",
+  "hullId": "xdp_superderelictfighter",
+  "displayName": "Standard",
+  "goalVariant": true,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0003": "pulselaser"
+      }
+    },
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "irpulse_fighter",
+        "WS0002": "irpulse_fighter",
+        "WS0004": "irpulse_fighter",
+        "WS0005": "irpulse_fighter"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}
